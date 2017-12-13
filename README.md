@@ -27,7 +27,7 @@ Or install it yourself as:
     $ gem install tomoyo_linux_ruby
 
 ## Usage
-
+(TODO)It comming soon.
 
 ## Development
 This project is still developping. It will deploy http://rubygems.org soon.
