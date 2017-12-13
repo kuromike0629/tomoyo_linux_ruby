@@ -7,6 +7,7 @@ Welcome to tomoyo_linux_ruby gem! This gem help you to manage and control TOMOYO
 You Need Install TOMOYO Linux and tomoyo-tools(On Ubuntu16.04 TOMOYOLinux is enable in default You just need install tomoyo-tools).
 
 Ubuntu16.04
+
     $sudo apt-get install tomoyo-tools
 
 for other systems [see](https://tomoyo.osdn.jp/index.html.en)
