@@ -24,12 +24,6 @@ module TomoyoLinuxRuby
         return true
     end
 
-    def load
-      #Load policy from the kernel.
-      #If editing policy, overwrite it.
-      import()
-    end
-
     def to_s
       #Return Current edited policy.
       ret = ''
