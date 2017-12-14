@@ -12,13 +12,12 @@ module TomoyoLinuxRuby
       end
       @domains = Array.new
     end
-    
     def apply
       #Apply edited policy.
       #This function is for only kernel policy.
       #If policy is system's return False.
       begin
-        o, e, s = Open3.capture3("/usr/sbin/tomoyo_loadpolicy -df",stdin_data: to_s)
+        o, e, s = Open3.capture3("/usr/sbin/tomoyo-loadpolicy -df",stdin_data: to_s)
       rescue Errno::ENOENT
         return false
       end
