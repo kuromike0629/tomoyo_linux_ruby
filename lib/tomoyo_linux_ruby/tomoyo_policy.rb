@@ -23,6 +23,15 @@ module TomoyoLinuxRuby
       end
         return true
     end
+    
+    def get_domains
+      #get domain list as Array.
+      ret_dom = []
+      @domains.each do |d|
+        ret_dom.push(d.domain)
+      end
+      return ret_dom
+    end
 
     def to_s
       #Return Current edited policy.
