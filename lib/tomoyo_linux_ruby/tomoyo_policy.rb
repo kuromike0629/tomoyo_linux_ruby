@@ -16,14 +16,9 @@ module TomoyoLinuxRuby
       #Apply edited policy.
       #This function is for only kernel policy.
       #If policy is system's return False.
-      begin
-        o, e, s = Open3.capture3("/usr/sbin/tomoyo-loadpolicy -df",stdin_data: to_s)
-      rescue Errno::ENOENT
-        return false
-      end
-        return true
+      o, e, s = Open3.capture3("/usr/sbin/tomoyo-loadpolicy -df",stdin_data: to_s)
     end
-    
+
     def get_domains
       #get domain list as Array.
       ret_dom = []
@@ -47,18 +42,14 @@ module TomoyoLinuxRuby
       #If merge_flag is True, merge current kernel and merge.
       #Return array of domains.
       ret = []
-      begin
-        File.open(policy_location,'r') do |f|
-          f.each_line do |line|
-            if line.split(' ')[0] == "<kernel>" then
-              ret.push(TomoyoLinuxRuby::TomoyoDomain.new(line))
-            else
-              ret[-1].add_policy(line)
-            end
+      File.open(policy_location,'r') do |f|
+        f.each_line do |line|
+          if line.split(' ')[0] == "<kernel>" then
+            ret.push(TomoyoLinuxRuby::TomoyoDomain.new(line))
+          else
+            ret[-1].add_policy(line)
           end
         end
-      rescue
-        return false
       end
       #If Flag is true
       if merge_flag then
