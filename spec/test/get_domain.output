@@ -1,0 +1,8 @@
+<kernel> /usr/bin/dbus-daemon /usr/lib/gnome-terminal/gnome-terminal-server /bin/bash /usr/bin/sudo /bin/su /bin/bash /usr/lib/command-not-found
+<kernel> /usr/bin/dbus-daemon /usr/lib/gnome-terminal/gnome-terminal-server /bin/bash /usr/bin/vim
+<kernel> /usr/bin/dbus-daemon /usr/lib/gnome-terminal/gnome-terminal-server /bin/bash /bin/chmod
+<kernel> /usr/bin/dbus-daemon /usr/lib/gnome-terminal/gnome-terminal-server /bin/bash /home/tomoyolinux/test.sh
+<kernel> /sbin/init /usr/lib/apt/apt.systemd.daily
+<kernel> /sbin/init /usr/lib/apt/apt.systemd.daily /usr/bin/apt-config
+<kernel> /sbin/init /usr/lib/apt/apt.systemd.daily /usr/bin/apt-config /usr/bin/dpkg
+<kernel> /sbin/init /usr/lib/apt/apt.systemd.daily /usr/bin/flock
