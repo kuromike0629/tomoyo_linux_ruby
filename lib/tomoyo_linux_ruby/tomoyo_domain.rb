@@ -135,5 +135,7 @@ module TomoyoLinuxRuby
       end
       return ret_s
     end
+
+    attr_reader :domain
   end
 end
