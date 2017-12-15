@@ -137,5 +137,6 @@ module TomoyoLinuxRuby
     end
 
     attr_reader :domain
+    attr_writer :use_profile
   end
 end
