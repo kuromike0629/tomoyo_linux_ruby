@@ -28,6 +28,13 @@ module TomoyoLinuxRuby
       return ret_dom
     end
 
+    def set_profile(domain_name,profile)
+      @domains.each do |d|
+        if d.domain == domain_name then
+          d.use_profile = profile
+        end
+      end
+    end
     def to_s
       #Return Current edited policy.
       ret = ''
