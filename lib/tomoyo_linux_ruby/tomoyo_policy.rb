@@ -35,6 +35,7 @@ module TomoyoLinuxRuby
           return d.to_s
         end
       end
+      return false
     end
 
     def set_profile(domain_name,profile)
