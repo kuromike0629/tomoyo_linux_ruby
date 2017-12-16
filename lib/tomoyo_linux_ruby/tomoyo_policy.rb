@@ -28,7 +28,17 @@ module TomoyoLinuxRuby
       return ret_dom
     end
 
+    def get_policy(domain_name)
+      #get policy of domain
+      @domains.each do |d|
+        if d.domain == domain_name then
+          return d.to_s
+        end
+      end
+    end
+
     def set_profile(domain_name,profile)
+      #set_profile for domain
       @domains.each do |d|
         if d.domain == domain_name then
           d.use_profile = profile
