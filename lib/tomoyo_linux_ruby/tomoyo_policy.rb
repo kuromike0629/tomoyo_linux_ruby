@@ -1,5 +1,7 @@
 module TomoyoLinuxRuby
   class TomoyoPolicy
+    attr_accessor :domains
+    attr_reader :location, :policy
     def initialize(policy="current")
       #Initializes policy classes
       #This Gem working on TOMOYOLinux Version 2.5.X
@@ -12,6 +14,7 @@ module TomoyoLinuxRuby
       end
       @domains = Array.new
     end
+
     def apply
       #Apply edited policy.
       #This function is for only kernel policy.
@@ -19,33 +22,36 @@ module TomoyoLinuxRuby
       o, e, s = Open3.capture3("/usr/sbin/tomoyo-loadpolicy -df",stdin_data: to_s)
     end
 
-    def get_domains
-      #get domain list as Array.
-      ret_dom = []
-      @domains.each do |d|
-        ret_dom.push(d.domain)
-      end
-      return ret_dom
-    end
-
     def get_policy(domain_name)
       #get policy of domain
       @domains.each do |d|
-        if d.domain == domain_name then
+        if d.name == domain_name then
           return d.to_s
         end
       end
       return false
     end
 
+    def get_domain_tree(base_domain)
+      #Return Domain which include base_domain
+      ret = []
+      @domains.each do |d|
+        if d.name.include?(base_domain) then
+          ret.push(d)
+        end
+      end
+      return ret
+    end
+
     def set_profile(domain_name,profile)
       #set_profile for domain
       @domains.each do |d|
-        if d.domain == domain_name then
+        if d.name == domain_name then
           d.use_profile = profile
         end
       end
     end
+
     def to_s
       #Return Current edited policy.
       ret = ''
@@ -81,7 +87,7 @@ module TomoyoLinuxRuby
     def export(filepath)
       #Export current policy as a file
       File.open(filepath,"w") do |f|
-        f.puts to_s
+        f.puts self.to_s
       end
     end
   end
