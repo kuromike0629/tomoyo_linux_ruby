@@ -1,7 +1,10 @@
 module TomoyoLinuxRuby
   class TomoyoDomain
+    attr_reader :name, :file, :use_group, :misc, :network, :task,:quota_exceeded,:transition_failed
+    attr_accessor :use_profile
+
     def initialize(domain)
-      @domain = domain
+      @name = domain
       @use_group = nil
       @use_profile = nil
       @file = Hash.new
@@ -83,7 +86,7 @@ module TomoyoLinuxRuby
 
     def to_s
       ret_s = ''
-      ret_s << @domain
+      ret_s << @name
       #Linked use_group
       if @use_group != nil then
         ret_s << 'use_group' << ' ' << @use_group.to_s << "\n"
@@ -135,8 +138,5 @@ module TomoyoLinuxRuby
       end
       return ret_s
     end
-
-    attr_reader :domain
-    attr_writer :use_profile
   end
 end
