@@ -49,6 +49,17 @@ module TomoyoLinuxRuby
       @domains[-1].add_policy('use_profile 0')
     end
 
+    def remove_domain(domain_name)
+      @domains.delete_if do |d|
+        d.name == domain_name
+      end
+    end
+
+    def remove_domains(domain_key)
+      @domains.delete_if do |d|
+        d.name.include?(domain_key)
+      end
+    end
     def find_domains(key_domain)
       ret = []
       @domains.each do |i|
