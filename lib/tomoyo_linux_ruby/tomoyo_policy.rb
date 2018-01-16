@@ -45,8 +45,8 @@ module TomoyoLinuxRuby
 
     def add_domain(domain_name)
       @domains.push(TomoyoLinuxRuby::TomoyoDomain.new(domain_name))
-      @domains[-1].add_policy('use_group 0')
-      @domains[-1].add_policy('use_profile 0')
+      @domains[-1].add_policy('use_group 0\n')
+      @domains[-1].add_policy('use_profile 0\n')
     end
 
     def remove_domain(domain_name)
